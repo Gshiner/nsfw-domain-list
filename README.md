@@ -8,6 +8,7 @@ This repository keeps one source domain list and publishes generated rule files 
 porn-domains.txt                    # single source of truth
 dist/clash/nsfw-reject.yaml         # ClashX Pro rule-provider file
 dist/shadowrocket/nsfw-reject.list  # Shadowrocket RULE-SET file
+dist/shadowrocket/nsfw-reject-domain-set.list # Shadowrocket DOMAIN-SET file
 scripts/build-rules.sh              # regenerate dist files from the source list
 metadata/porn-collector-report.json # source collection summary
 ```
@@ -43,7 +44,13 @@ Put this rule before proxy/global rules so it wins first.
 
 ## Shadowrocket
 
-Add this under `[Rule]`:
+Prefer `DOMAIN-SET` because it is smaller and lighter for iOS:
+
+```text
+DOMAIN-SET,https://raw.githubusercontent.com/Gshiner/nsfw-domain-list/main/dist/shadowrocket/nsfw-reject-domain-set.list,REJECT
+```
+
+If a config only supports `RULE-SET`, use:
 
 ```text
 RULE-SET,https://raw.githubusercontent.com/Gshiner/nsfw-domain-list/main/dist/shadowrocket/nsfw-reject.list,REJECT

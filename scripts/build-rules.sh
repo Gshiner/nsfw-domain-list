@@ -5,6 +5,7 @@ ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SOURCE_FILE="$ROOT_DIR/porn-domains.txt"
 CLASH_OUT="$ROOT_DIR/dist/clash/nsfw-reject.yaml"
 SHADOWROCKET_OUT="$ROOT_DIR/dist/shadowrocket/nsfw-reject.list"
+SHADOWROCKET_DOMAIN_SET_OUT="$ROOT_DIR/dist/shadowrocket/nsfw-reject-domain-set.list"
 TMP_DIR="$(mktemp -d)"
 
 trap 'rm -rf "$TMP_DIR"' EXIT
@@ -38,5 +39,7 @@ awk '
   awk '{ print "DOMAIN-SUFFIX," $0 }' "$TMP_DIR/domains.txt"
 } > "$SHADOWROCKET_OUT"
 
+cp "$TMP_DIR/domains.txt" "$SHADOWROCKET_DOMAIN_SET_OUT"
+
 echo "generated:"
-wc -l "$CLASH_OUT" "$SHADOWROCKET_OUT"
+wc -l "$CLASH_OUT" "$SHADOWROCKET_OUT" "$SHADOWROCKET_DOMAIN_SET_OUT"

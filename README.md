@@ -31,7 +31,7 @@ rule-providers:
   nsfw-reject:
     type: http
     behavior: classical
-    url: https://raw.githubusercontent.com/<owner>/<repo>/main/dist/clash/nsfw-reject.yaml
+    url: https://raw.githubusercontent.com/Gshiner/nsfw-domain-list/main/dist/clash/nsfw-reject.yaml
     path: ./ruleset/nsfw-reject.yaml
     interval: 86400
 
@@ -46,10 +46,14 @@ Put this rule before proxy/global rules so it wins first.
 Add this under `[Rule]`:
 
 ```text
-RULE-SET,https://raw.githubusercontent.com/<owner>/<repo>/main/dist/shadowrocket/nsfw-reject.list,REJECT
+RULE-SET,https://raw.githubusercontent.com/Gshiner/nsfw-domain-list/main/dist/shadowrocket/nsfw-reject.list,REJECT
 ```
 
 Put it before general proxy rules.
+
+## GitHub Actions
+
+When `porn-domains.txt` changes on `main`, the workflow in `.github/workflows/build-rules.yml` runs `scripts/build-rules.sh` and commits updated `dist/` files if needed.
 
 ## Notes
 

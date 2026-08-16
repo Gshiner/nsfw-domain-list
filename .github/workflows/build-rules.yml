@@ -1,0 +1,37 @@
+name: Build Rules
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - porn-domains.txt
+      - scripts/build-rules.sh
+      - .github/workflows/build-rules.yml
+
+permissions:
+  contents: write
+
+jobs:
+  build-rules:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Build generated rule files
+        run: ./scripts/build-rules.sh
+
+      - name: Commit generated files
+        run: |
+          if [[ -z "$(git status --porcelain -- dist/clash/nsfw-reject.yaml dist/shadowrocket/nsfw-reject.list)" ]]; then
+            echo "generated files are already up to date"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dist/clash/nsfw-reject.yaml dist/shadowrocket/nsfw-reject.list
+          git commit -m "chore: update generated rule files [skip ci]"
+          git push

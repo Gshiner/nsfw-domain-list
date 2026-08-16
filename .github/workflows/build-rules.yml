@@ -6,6 +6,7 @@ on:
     branches:
       - main
     paths:
+      - allow-domains.txt
       - porn-domains.txt
       - scripts/build-rules.sh
       - .github/workflows/build-rules.yml

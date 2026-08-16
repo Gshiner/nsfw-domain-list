@@ -1,0 +1,5 @@
+# False positives that must never be included in generated reject rules.
+xiaohongshu.com
+xhscdn.com
+xhscdn.net
+xhslink.com

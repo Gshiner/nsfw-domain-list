@@ -6,6 +6,7 @@ This repository keeps one source domain list and publishes generated rule files 
 
 ```text
 porn-domains.txt                    # single source of truth
+allow-domains.txt                   # false positives excluded from generated rules
 dist/clash/nsfw-reject.yaml         # ClashX Pro rule-provider file
 dist/shadowrocket/nsfw-reject.list  # Shadowrocket RULE-SET file
 dist/shadowrocket/nsfw-reject-domain-set.list # Shadowrocket DOMAIN-SET file
@@ -15,7 +16,7 @@ metadata/porn-collector-report.json # source collection summary
 
 ## Update Rules
 
-Edit `porn-domains.txt`, then run:
+Edit `porn-domains.txt`. If a normal site is blocked by mistake, add it to `allow-domains.txt`. Then run:
 
 ```bash
 ./scripts/build-rules.sh

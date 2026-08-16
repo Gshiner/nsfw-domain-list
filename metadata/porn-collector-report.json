@@ -1,0 +1,56 @@
+{
+  "sources": {
+    "oisd-domainswild": {
+      "raw_lines": 494106,
+      "domains": 494088,
+      "skipped": 18
+    },
+    "stevenblack-porn-hosts": {
+      "raw_lines": 181922,
+      "domains": 175051,
+      "skipped": 6871
+    },
+    "blocklistproject-porn": {
+      "raw_lines": 953406,
+      "domains": 953197,
+      "skipped": 209
+    },
+    "hagezi-nsfw-adblock": {
+      "raw_lines": 110874,
+      "domains": 110861,
+      "skipped": 13
+    },
+    "bon-appetit-block": {
+      "raw_lines": 429597,
+      "domains": 429597,
+      "skipped": 0
+    }
+  },
+  "allowlists": {
+    "bon-appetit-allow": {
+      "raw_lines": 15090,
+      "domains": 15090,
+      "skipped": 0
+    }
+  },
+  "unique_before_filters": 1243748,
+  "manual_added_new": 3,
+  "public_suffix_entries_removed": 21,
+  "allowlist_removed": 177035,
+  "after_filters_before_compression": 1066692,
+  "compressed_domains": 975068,
+  "manual_readded": [],
+  "manual_coverage": {
+    "missav.ai": true,
+    "missav.com": true,
+    "missav.live": true,
+    "missav.to": true,
+    "missav.ws": true,
+    "missav123.com": true,
+    "s1s1s1.com": true,
+    "s1s1s1.tv": true,
+    "s1s1s1.video": true,
+    "s1s1s1.vip": true,
+    "thisav.com": true
+  }
+}
